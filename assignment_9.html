@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Assignment</title>
+
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">JavaScript Assignment</h2>
+
+        <div class="text-center mb-3">
+            <button class="btn btn-primary" onclick="runAll()">Run All Functions</button>
+        </div>
+
+        <div class="card p-3">
+            <pre id="output"></pre>
+        </div>
+    </div>
+
+    <script>
+
+        function runAll() {
+
+            let output = "";
+
+            // 1. Scope Example
+            function checkScope() {
+                var a = 10;
+                let b = 20;
+                const c = 30;
+
+                return "var: " + a + ", let: " + b + ", const: " + c;
+            }
+
+            output += "1. Scope: \n" + checkScope() + "\n\n";
+
+
+            // 2. Fruits Array
+            const fruits = ["Apple", "Banana", "Mango", "Orange", "Grapes"];
+
+            function getSecondFruit() {
+                return fruits[1];
+            }
+
+            output += "2. Second Fruit: " + getSecondFruit() + "\n\n";
+
+
+            // 3. Push & Pop
+            function modifyArray(arr) {
+                arr.push("NewItem");
+                arr.pop();
+                return arr;
+            }
+
+            output += "3. Modified Array: " + modifyArray([1, 2, 3]) + "\n\n";
+
+
+            // 4. Map (Square Numbers)
+            function squareNumbers(arr) {
+                return arr.map(function(num) {
+                    return num * num;
+                });
+            }
+
+            output += "4. Squared Numbers: " + squareNumbers([2, 3, 4]) + "\n\n";
+
+
+            // 5. Filter (Odd Numbers)
+            function getOddNumbers(arr) {
+                return arr.filter(function(num) {
+                    return num % 2 !== 0;
+                });
+            }
+
+            output += "5. Odd Numbers: " + getOddNumbers([1, 2, 3, 4, 5]) + "\n\n";
+
+
+            // 6. Object Greeting
+            const person = {
+                name: "Aryan",
+                age: 20,
+                occupation: "Student"
+            };
+
+            function greet() {
+                return "Hello, my name is " + person.name + 
+                       ", I am a " + person.occupation;
+            }
+
+            output += "6. Greeting: " + greet() + "\n\n";
+
+
+            // 7. Rectangle Area
+            function getArea(obj) {
+                return obj.width * obj.height;
+            }
+
+            output += "7. Area: " + getArea({ width: 5, height: 10 }) + "\n\n";
+
+
+            // 8. Object Keys
+            function getKeys(obj) {
+                return Object.keys(obj);
+            }
+
+            output += "8. Keys: " + getKeys({ a: 1, b: 2, c: 3 }) + "\n\n";
+
+
+            // 9. Merge Objects
+            function mergeObjects(obj1, obj2) {
+                return Object.assign({}, obj1, obj2);
+            }
+
+            let merged = mergeObjects({ a: 1 }, { b: 2 });
+
+            output += "9. Merged Object: " + JSON.stringify(merged) + "\n\n";
+
+
+            // 10. Reduce (Sum)
+            function sumArray(arr) {
+                return arr.reduce(function(sum, num) {
+                    return sum + num;
+                }, 0);
+            }
+
+            output += "10. Sum: " + sumArray([1, 2, 3, 4, 5]) + "\n\n";
+
+
+            document.getElementById("output").innerText = output;
+        }
+
+    </script>
+
+</body>
+</html>
