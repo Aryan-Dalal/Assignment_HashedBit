@@ -1,41 +1,40 @@
 import { useNavigate } from "react-router-dom";
 
+// IMPORT IMAGES
+import avengers from "../assets/avengers.png";
+import batman from "../assets/batman.png";
+import spiderman from "../assets/spiderman.png";
+import doomsday from "../assets/doomsday.png";
+import dune from "../assets/dune.png";
+import oppenheimer from "../assets/oppenheimer.png";
+import interstellar from "../assets/interstellar.png";
+
+
 function Home() {
   const navigate = useNavigate();
 
   const movies = [
-    { id: 1, name: "Avengers" },
-    { id: 2, name: "Batman" },
-    { id: 3, name: "Spiderman" },
-    { id: 4, name: "KGF" },
-    { id: 5, name: "Pushpa" },
-    { id: 6, name: "Jawan" },
-    { id: 7, name: "Pathaan" },
-    { id: 8, name: "RRR" },
-    { id: 9, name: "Inception" },
-    { id: 10, name: "Titanic" },
-    { id: 11, name: "Interstellar" },
-    { id: 12, name: "Dangal" },
-    { id: 13, name: "War" },
-    { id: 14, name: "Krrish" },
-    { id: 15, name: "Don" },
-    { id: 16, name: "Raees" },
+    { id: 1, name: "Avengers : Infinity War", img: avengers },
+    { id: 2, name: "Batman", img: batman },
+    { id: 3, name: "Spiderman-Brand New Day", img: spiderman },
+    { id: 4, name: "Avengers : Doomsday", img: doomsday },
+    { id: 5, name: "Dune 2", img: dune },
+    { id: 6, name: "Oppenheimer", img: oppenheimer },
+    { id: 7, name: "Interstellar", img: interstellar },
   ];
 
   return (
     <div className="container">
-      <h2>Movies</h2>
+      <h2>🎬 Movies</h2>
 
       <div className="grid">
         {movies.map((m) => (
-          <div className="card" key={m.id} onClick={() => navigate(`/movie/${m.id}`)}>
-            
-            {/* Random image */}
-            <img
-              src={`https://source.unsplash.com/300x200/?movie,cinema&sig=${m.id}`}
-              alt="movie"
-            />
-
+          <div
+            className="card"
+            key={m.id}
+            onClick={() => navigate(`/movie/${m.id}`, { state: m })}
+          >
+            <img src={m.img} alt={m.name} />
             <p>{m.name}</p>
           </div>
         ))}

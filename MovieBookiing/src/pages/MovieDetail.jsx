@@ -1,13 +1,20 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function MovieDetail() {
   const navigate = useNavigate();
-  const { id } = useParams();
+  const { state } = useLocation();
+
+  if (!state) return <h2>No Movie Selected</h2>;
 
   return (
-    <div>
-      <h2>Movie Details</h2>
-      <p>Movie ID: {id}</p>
+    <div className="detail">
+      <h2>{state.name}</h2>
+
+      <img src={state.img} alt={state.name} />
+
+      <p>
+        This is a blockbuster movie. Book your tickets now and enjoy the show!
+      </p>
 
       <button onClick={() => navigate("/book")}>
         Book Seat
